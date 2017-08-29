@@ -7,13 +7,17 @@ env:
 
 phases:
   install:
-    - go get -u github.com/golang/dep
+    command:
+      - go get -u github.com/golang/dep
   pre_build:
-    - dep ensure
+    command:
+      - dep ensure
   build:
-    - go build -o $GOPATH/bin/$APP_NAME-$APP_VERSION
+    command:
+      - go build -o $GOPATH/bin/$APP_NAME-$APP_VERSION
   post_build:
-    - go test
+    command:
+      - go test
 artifacts:
   files:
     $GOPATH/bin/$APP_NAME-$APP_VERSION
